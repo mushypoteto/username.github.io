@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Burger Menu</title>
+
+<style>
+  :root{--nav:rgb(162, 0, 187);--bg:#fff;--text:rgb(119, 48, 139);--bar:#fff}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI;background:var(--bg);color:var(--text)}
+  header{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:rgb(146, 33, 152);color:#fff}
+  .brand{font-weight:700}
+
+  .hamburger-btn{
+    width:44px;height:44px;border:0;background:transparent;display:flex;justify-content:center;align-items:center;
+    cursor:pointer;position:relative;transition:transform .15s
+  }
+  .hamburger-btn .bars{width:30px;height:4px;background:var(--bar);display:block;position:relative;border-radius:2px;transition:all .25s}
+  .hamburger-btn .bars::before,.hamburger-btn .bars::after{content:"";position:absolute;left:0;width:30px;height:4px;background:var(--bar);border-radius:2px;transition:all .25s}}
+  .hamburger-btn .bars::before{top:-8px} .hamburger-btn .bars::after{top:8px}
+
+  .hamburger-btn[aria-expanded="true"] .bars{background:transparent}
+  .hamburger-btn[aria-expanded="true"] .bars::before{transform:translateY(8px) rotate(45deg)}
+  .hamburger-btn[aria-expanded="true"] .bars::after{transform:translateY(-8px) rotate(-45deg)}
+
+  .mobile-panel{
+    position:fixed;inset:0 auto 0 0;width:260px;max-width:80%;height:100vh;background:#fff;color:#111;box-shadow:4px 0 20px rgba(0,0,0,.12);
+    transform:translateX(-110%);transition:transform .28s ease;z-index:60;padding:20px;
+  }
+  .mobile-panel.open{transform:translateX(0)}
+  .mobile-panel nav ul{list-style:none;padding:0;margin:18px 0 0;display:flex;flex-direction:column;gap:8px}
+  .mobile-panel a{display:block;padding:10px 12px;color:rgb(161, 20, 174);text-decoration:none;border-radius:8px;font-weight:700}
+  .overlay{position:fixed;inset:0;background:rgba(0,0,0,.3);opacity:0;pointer-events:none;transition:opacity .2s}
+  .overlay.show{opacity:1;pointer-events:auto}
+   
+
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">WST 249</div>
+  <button class="hamburger-btn" id="hambtn" aria-controls="mobilePanel" aria-expanded="false" aria-label="Open menu">
+    <span class="bars" aria-hidden="true"></span>
+  </button>
+</header>
+<div id="mobilePanel" class="mobile-panel" role="dialog" aria-modal="true" aria-hidden="true">
+  <button id="closeBtn" aria-label="Close menu" style="background:none;border:0;padding:6px;cursor:pointer;font-weight:700">Close ✕</button>
+  <nav aria-label="Mobile primary">
+    <ul>
+      <li><a href="#home" onclick="closeMenu()">Home</a></li>
+      <li><a href="#about" onclick="closeMenu()">About</a></li>
+      <li><a href="#portfolio" onclick="closeMenu()">Portfolio</a></li>
+      <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+    </ul>
+  </nav>
+</div>
+<div id="overlay" class="overlay" tabindex="-1" aria-hidden="true"></div>
+<script>
+  const btn = document.getElementById('hambtn');
+  const panel = document.getElementById('mobilePanel');
+  const overlay = document.getElementById('overlay');
+  const closeBtn = document.getElementById('closeBtn');
+  function openMenu(){
+    btn.setAttribute('aria-expanded','true');
+    panel.classList.add('open'); panel.setAttribute('aria-hidden','false');
+    overlay.classList.add('show'); overlay.setAttribute('aria-hidden','false');
+    closeBtn.focus();
+  }
+  function closeMenu(){
+    btn.setAttribute('aria-expanded','false');
+    panel.classList.remove('open'); panel.setAttribute('aria-hidden','true');
+    overlay.classList.remove('show'); overlay.setAttribute('aria-hidden','true');
+    btn.focus();
+  }
+  btn.addEventListener('click', ()=> {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    expanded ? closeMenu() : openMenu();
+  });
+  overlay.addEventListener('click', closeMenu);
+  closeBtn.addEventListener('click', closeMenu);
+  document.addEventListener('keydown', (e)=>{if(e.key === 'Escape') closeMenu();});
+  window.closeMenu = closeMenu;
+</script>
+</body>
+</html>

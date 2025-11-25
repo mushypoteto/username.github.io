@@ -1,0 +1,45 @@
+!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Horizontal Navigation</title>
+
+<style>
+  :root{
+    --bg:#ffffff; --nav:rgb(170, 72, 202); --text:rgb(176, 113, 216); --muted:#666;
+  }
+  body{font-family:system-ui,-apple-system,Segoe UI;background:var(--bg);margin:0}
+  nav.horizontal{background:rgb(139, 42, 177);color:#fff;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+  .container{max-width:1100px;margin:0 auto;padding:0 16px}
+  .horizontal .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{font-weight:700;letter-spacing:.4px}
+
+  .nav-links{list-style:none;display:flex;gap:18px;margin:0;padding:0}
+  .nav-links a{display:inline-block;padding:10px 12px;color:#fff;text-decoration:none;border-radius:6px;font-weight:600}
+  .nav-links a:hover,.nav-links a:focus{background:rgb(170, 72, 202);outline:none}
+
+  @media (max-width:640px){
+    .nav-links{display:none}
+  }
+
+</style>
+
+</head>
+<body>
+
+<nav class="horizontal" role="navigation" aria-label="Main">
+  <div class="container">
+    <div class="nav-inner">
+      <div class="brand">WST 249</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+</body>
+</html>
