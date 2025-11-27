@@ -122,10 +122,10 @@ section {
 }
 
 .hero-content {
-  max-width: 500px;
-  z-index: 2;
-  text-align: left; 
+  flex: 1;
+  padding-right: 40px;
 }
+
 
 .hero-content h1 {
   font-size: 3rem;
@@ -156,19 +156,20 @@ section {
 }
 
 .hero-image {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  max-width: 60%;
-  z-index: 1;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 50%;
   opacity: 0.9;
 }
 
 .hero-image img {
   width: 100%;
   height: auto;
-  object-fit: cover;
+  object-fit: contain;
 }
+
 
 .gallery-vertical {
   display: flex;
