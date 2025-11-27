@@ -17,7 +17,7 @@ body {
   color: var(--text-light);
 }
 
-/* NAVIGATION */
+
 nav {
   display: flex;
   justify-content: space-between;
@@ -37,7 +37,6 @@ nav {
   position: relative;
   display: inline-block;
 }
-
 .dropbtn {
   background-color: #0a0a0a;
   color: white;
@@ -50,7 +49,7 @@ nav {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: white;
+  background-color: #000; 
   min-width: 160px;
   box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
   border-radius: 6px;
@@ -58,14 +57,15 @@ nav {
 }
 
 .dropdown-content a {
-  color: black;
+  color: #fff;              
   padding: 10px 15px;
   text-decoration: none;
   display: block;
 }
 
 .dropdown-content a:hover {
-  background-color: #f1f1f1;
+  background-color: #000000;
+  color: gold;
 }
 
 .dropdown:hover .dropdown-content {
@@ -118,7 +118,6 @@ nav ul li a:hover {
   color: black;
 }
 
-/* HERO */
 .hero {
   display: flex;
   justify-content: space-between;
@@ -194,8 +193,6 @@ nav ul li a:hover {
   transform: scale(1.2);
 }
 
-
-/* SERVICES */
 .services {
   padding: 4rem 5%;
   text-align: center;
@@ -244,7 +241,6 @@ nav ul li a:hover {
   font-size: 0.95rem;
 }
 
-/* PROJECTS */
 .projects {
   padding: 4rem 5%;
 }
@@ -289,7 +285,6 @@ nav ul li a:hover {
   color: var(--text-gray);
 }
 
-/* FOOTER */
 footer {
   text-align: center;
   padding: 2rem 0;
